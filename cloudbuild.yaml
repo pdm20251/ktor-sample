@@ -4,8 +4,8 @@ steps:
     entrypoint: 'gradle'
     args: 
       - 'jib'
-      - '--image=gcr.io/$PROJECT_ID/ktor-api:$BUILD_ID'
-      - '--image=gcr.io/$PROJECT_ID/ktor-api:latest'
+      - '--image=gcr.io/$PROJECT_ID/ktor-sample:$BUILD_ID'
+      - '--image=gcr.io/$PROJECT_ID/ktor-sample:latest'
     env:
       - 'GRADLE_OPTS=-Dorg.gradle.daemon=false'
 
@@ -15,8 +15,8 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'ktor-api'
-      - '--image=gcr.io/$PROJECT_ID/ktor-api:$BUILD_ID'
+      - 'ktor-sample'
+      - '--image=gcr.io/$PROJECT_ID/ktor-sample:$BUILD_ID'
       - '--region=us-central1'
       - '--platform=managed'
       - '--allow-unauthenticated'
@@ -37,5 +37,5 @@ timeout: '1200s'
 
 # Substitutions para variáveis
 substitutions:
-  _SERVICE_NAME: 'ktor-api'
+  _SERVICE_NAME: 'ktor-sample'
   _REGION: 'us-central1'

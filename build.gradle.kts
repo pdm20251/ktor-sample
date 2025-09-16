@@ -31,7 +31,7 @@ jib {
         image = "openjdk:17-jre-slim"
     }
     to {
-        image = "gcr.io/estudapp-71947/ktor-api"
+        image = "gcr.io/estudapp-71947/ktor-sample"
         tags = setOf("latest", version.toString())
     }
     container {
