@@ -43,5 +43,12 @@ fun Application.module() {
                 mapOf("status" to "healthy")
             )
         }
+
+        get("/hello") {
+            call.respond(
+                HttpStatusCode.OK,
+                mapOf("hello" to "world!")
+            )
+        }
     }
 }

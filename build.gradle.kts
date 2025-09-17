@@ -28,11 +28,11 @@ dependencies {
 
 jib {
     from {
-        image = "openjdk:17-jre-slim"
+        image = "eclipse-temurin:17-jre"
     }
     to {
         image = "gcr.io/estudapp-71947/ktor-sample"
-        tags = setOf("latest", version.toString())
+        tags = setOf("latest")
     }
     container {
         ports = listOf("8080")

@@ -4,8 +4,7 @@ steps:
     entrypoint: 'gradle'
     args: 
       - 'jib'
-      - '--image=gcr.io/$PROJECT_ID/ktor-sample:$BUILD_ID'
-      - '--image=gcr.io/$PROJECT_ID/ktor-sample:latest'
+      - '--image=gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BUILD_ID'
     env:
       - 'GRADLE_OPTS=-Dorg.gradle.daemon=false'
 
@@ -15,9 +14,9 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'ktor-sample'
-      - '--image=gcr.io/$PROJECT_ID/ktor-sample:$BUILD_ID'
-      - '--region=us-central1'
+      - '${_SERVICE_NAME}'
+      - '--image=gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$BUILD_ID'
+      - '--region=${_REGION}'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--port=8080'
@@ -26,6 +25,8 @@ steps:
       - '--min-instances=0'
       - '--max-instances=10'
       - '--timeout=300s'
+      - '--ingress=all'
+      - '--no-cpu-throttling'
 
 # Configurações opcionais
 options:
